@@ -1,0 +1,6 @@
+# Base de datos local (se genera sola al iniciar el servidor)
+servihogar.db
+servihogar.db-journal
+servihogar.db-wal
+servihogar.db-shm
+node_modules/

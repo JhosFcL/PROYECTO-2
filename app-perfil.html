@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil | ServiHogar</title>
+    <link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body>
+<div class="app-shell">
+
+    <aside class="sidebar">
+        <a href="app-inicio.html" class="sidebar-logo">
+            <img src="assets/images/logo.jpg" alt="ServiHogar">
+            <span>Servi<b>Hogar</b></span>
+        </a>
+        <nav class="sidebar-nav">
+            <a href="app-inicio.html" class="nav-item"><span>Inicio</span></a>
+            <a href="app-buscar.html" class="nav-item"><span>Buscar</span></a>
+            <a href="app-chat.html" class="nav-item"><span>Chats</span></a>
+            <a href="app-historial.html" class="nav-item"><span>Historial</span></a>
+            <a href="app-perfil.html" class="nav-item active"><span>Perfil</span></a>
+        </nav>
+        <div class="sidebar-user">
+            <div class="user-name" id="sidebar-name">Cargando...</div>
+            <div class="user-type" id="sidebar-type">Cliente</div>
+            <a href="#" class="btn-salir" id="btn-salir">← Cerrar sesión</a>
+        </div>
+    </aside>
+
+    <div class="main">
+        <div class="topbar">
+            <div class="topbar-title">Mi perfil</div>
+        </div>
+
+        <div class="page">
+            <div class="perfil-box">
+                <div class="perfil-header">
+                    <div id="perfil-avatar" class="perfil-avatar">?</div>
+                    <div>
+                        <div id="perfil-nombre" class="perfil-nombre">Cargando...</div>
+                        <div id="perfil-tipo" class="perfil-subtipo">Cliente</div>
+                    </div>
+                </div>
+
+                <div class="perfil-datos">
+                    <div class="perfil-fila">
+                        <span class="perfil-label">Correo</span>
+                        <span id="perfil-correo" class="perfil-valor">—</span>
+                    </div>
+                    <div class="perfil-fila">
+                        <span class="perfil-label">Teléfono</span>
+                        <span id="perfil-telefono" class="perfil-valor">—</span>
+                    </div>
+                    <div class="perfil-fila">
+                        <span class="perfil-label">Distrito</span>
+                        <span id="perfil-distrito" class="perfil-valor">—</span>
+                    </div>
+                    <div class="perfil-fila">
+                        <span class="perfil-label">Tipo de cuenta</span>
+                        <span id="perfil-tipo2" class="perfil-valor">—</span>
+                    </div>
+
+                    <!-- Datos visibles solo para trabajadores -->
+                    <div class="perfil-fila perfil-fila-trab" hidden>
+                        <span class="perfil-label">Categoría</span>
+                        <span id="perfil-categoria" class="perfil-valor">—</span>
+                    </div>
+                    <div class="perfil-fila perfil-fila-trab" hidden>
+                        <span class="perfil-label">Experiencia</span>
+                        <span id="perfil-experiencia" class="perfil-valor">—</span>
+                    </div>
+                    <div class="perfil-fila perfil-fila-trab" hidden>
+                        <span class="perfil-label">Verificación</span>
+                        <span id="perfil-verificado" class="perfil-valor">—</span>
+                    </div>
+                    <div class="perfil-fila perfil-fila-last perfil-fila-trab" hidden>
+                        <span class="perfil-label">Sobre mí</span>
+                        <span id="perfil-descripcion" class="perfil-valor">—</span>
+                    </div>
+                </div>
+
+                <button class="btn-cerrar-sesion" id="btn-cerrar-sesion">
+                    Cerrar sesión
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="assets/js/datos.js"></script>
+<script src="assets/js/perfil.js"></script>
+<script src="assets/js/app-interno.js"></script>
+</body>
+</html>

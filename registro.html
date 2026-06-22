@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro | ServiHogar</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">
+            <img src="assets/images/logo.jpg" alt="Logo ServiHogar">
+            <h4>Servi<span>Hogar</span></h4>
+        </a>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="como-funciona.html">Cómo funciona</a>
+            <a href="sobre-nosotros.html">Sobre nosotros</a>
+            <a href="login.html">Iniciar sesión</a>
+        </nav>
+    </header>
+
+    <section class="registro">
+        <h2>Únete a ServiHogar</h2>
+        <p>Crea tu cuenta y encuentra trabajadores verificados en minutos</p>
+        <form id="form-registro" novalidate>
+            <div class="campo"><input type="text" name="nombre" placeholder="Nombre" required></div>
+            <div class="campo"><input type="text" name="apellido" placeholder="Apellido" required></div>
+            <div class="campo"><input type="tel" name="telefono" placeholder="Teléfono (9 dígitos)" maxlength="9" required></div>
+            <div class="campo"><input type="email" name="correo" placeholder="Correo electrónico" required></div>
+            <div class="campo"><input type="text" name="distrito" placeholder="Distrito (ej: Miraflores, San Isidro)" required></div>
+            <div class="campo">
+                <select name="tipo" id="tipo" class="select-tipo" required>
+                    <option value="">Tipo de cuenta</option>
+                    <option value="cliente">Soy cliente — necesito servicios</option>
+                    <option value="trabajador">Soy trabajador — ofrezco mis servicios</option>
+                </select>
+            </div>
+
+            <!-- Verificación de seguridad para trabajadores -->
+            <div id="bloque-trabajador" class="bloque-trabajador" hidden>
+                <div class="bloque-trabajador-titulo">Verificación de trabajador</div>
+                <p class="bloque-trabajador-nota">Para garantizar la seguridad de los clientes, los trabajadores deben verificar su identidad.</p>
+                <div class="campo"><input type="text" name="dni" placeholder="DNI (8 dígitos)" maxlength="8" inputmode="numeric"></div>
+                <div class="campo">
+                    <select name="categoria" id="categoria" class="select-tipo">
+                        <option value="">Categoría de servicio</option>
+                        <option value="gasfitería">Gasfitería y plomería</option>
+                        <option value="electricidad">Electricidad</option>
+                        <option value="limpieza">Limpieza del hogar</option>
+                        <option value="reparaciones">Reparaciones y técnico</option>
+                        <option value="mudanza">Mudanzas y carga</option>
+                        <option value="pintura">Pintura</option>
+                        <option value="carpintería">Carpintería</option>
+                        <option value="jardinería">Jardinería</option>
+                    </select>
+                </div>
+                <div class="campo"><input type="number" name="experiencia" placeholder="Años de experiencia" min="0" max="60"></div>
+                <div class="campo"><textarea name="descripcion" placeholder="Describe brevemente tu experiencia y servicios" rows="3"></textarea></div>
+                <label class="campo-check">
+                    <input type="checkbox" name="acepta" id="acepta">
+                    <span>Declaro que los datos son verídicos y autorizo su verificación.</span>
+                </label>
+            </div>
+
+            <div class="campo"><input type="password" name="contrasena" placeholder="Contraseña (mínimo 6 caracteres)" required></div>
+            <div class="campo"><input type="password" name="confirmar" placeholder="Confirmar contraseña" required></div>
+            <button type="submit">Registrarme</button>
+        </form>
+        <p class="enlace">¿Ya tienes cuenta? <a href="login.html">Inicia sesión aquí</a></p>
+    </section>
+
+    <footer>
+        <div class="footer-bottom">
+            <p>&copy; 2025 ServiHogar UPCH | Proyecto desarrollado por estudiantes de la Universidad Peruana Cayetano Heredia.</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/datos.js"></script>
+    <script src="assets/js/registro.js"></script>
+</body>
+</html>

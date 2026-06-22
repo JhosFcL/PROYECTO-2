@@ -1,0 +1,16 @@
+{
+  "name": "servihogar",
+  "version": "1.0.0",
+  "description": "ServiHogar — plataforma que conecta clientes con trabajadores del hogar (con base de datos SQLite).",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "pg": "^8.13.0"
+  },
+  "engines": {
+    "node": ">=22.5.0"
+  },
+  "private": true
+}

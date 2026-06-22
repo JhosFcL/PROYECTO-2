@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio | ServiHogar</title>
+    <link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body>
+<div class="app-shell">
+
+    <aside class="sidebar">
+        <a href="app-inicio.html" class="sidebar-logo">
+            <img src="assets/images/logo.jpg" alt="ServiHogar">
+            <span>Servi<b>Hogar</b></span>
+        </a>
+        <nav class="sidebar-nav">
+            <a href="app-inicio.html" class="nav-item active"><span>Inicio</span></a>
+            <a href="app-buscar.html" class="nav-item"><span>Buscar</span></a>
+            <a href="app-chat.html" class="nav-item"><span>Chats</span></a>
+            <a href="app-historial.html" class="nav-item"><span>Historial</span></a>
+            <a href="app-perfil.html" class="nav-item"><span>Perfil</span></a>
+        </nav>
+        <div class="sidebar-user">
+            <div class="user-name" id="sidebar-name">Cargando...</div>
+            <div class="user-type" id="sidebar-type">Cliente</div>
+            <a href="#" class="btn-salir" id="btn-salir">← Cerrar sesión</a>
+        </div>
+    </aside>
+
+    <div class="main">
+        <div class="topbar">
+            <div class="topbar-title">Trabajos recientes</div>
+        </div>
+
+        <div class="page">
+
+            <div class="welcome" id="welcome"></div>
+
+            <div class="stats-row" id="stats-row"></div>
+
+            <div class="feed-topbar">
+                <div class="tabs">
+                    <button class="tab active">Recientes</button>
+                    <button class="tab">Populares</button>
+                </div>
+                <a href="app-buscar.html" class="btn-primary btn-solicitar">+ Solicitar servicio</a>
+            </div>
+
+            <div class="feed"></div>
+        </div>
+    </div>
+</div>
+
+<script src="assets/js/datos.js"></script>
+<script src="assets/js/app-interno.js"></script>
+</body>
+</html>

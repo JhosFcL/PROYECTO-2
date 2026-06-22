@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publicar servicio | ServiHogar</title>
+    <link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body>
+<div class="app-shell">
+
+    <aside class="sidebar">
+        <a href="app-inicio.html" class="sidebar-logo">
+            <img src="assets/images/logo.jpg" alt="ServiHogar">
+            <span>Servi<b>Hogar</b></span>
+        </a>
+        <nav class="sidebar-nav">
+            <a href="app-inicio.html" class="nav-item"><span>Inicio</span></a>
+            <a href="app-publicar.html" class="nav-item active"><span>Publicar</span></a>
+            <a href="app-chat.html" class="nav-item"><span>Chats</span></a>
+            <a href="app-historial.html" class="nav-item"><span>Historial</span></a>
+            <a href="app-perfil.html" class="nav-item"><span>Perfil</span></a>
+        </nav>
+        <div class="sidebar-user">
+            <div class="user-name" id="sidebar-name">Cargando...</div>
+            <div class="user-type" id="sidebar-type">Trabajador</div>
+            <a href="#" class="btn-salir" id="btn-salir">← Cerrar sesión</a>
+        </div>
+    </aside>
+
+    <div class="main">
+        <div class="topbar">
+            <div class="topbar-title">Publicar un servicio</div>
+        </div>
+
+        <div class="page">
+            <div class="publicar-box">
+                <h2 class="publicar-titulo">Comparte un servicio con los clientes</h2>
+                <p class="publicar-sub">Los clientes verán esta publicación al iniciar sesión y podrán contactarte.</p>
+                <form id="form-publicar" class="publicar-form" novalidate>
+                    <label>Título del servicio
+                        <input type="text" name="titulo" placeholder="Ej: Instalación de tuberías de agua" maxlength="80" required>
+                    </label>
+                    <label>Categoría
+                        <select name="categoria" required>
+                            <option value="">Selecciona una categoría</option>
+                            <option value="gasfitería">Gasfitería y plomería</option>
+                            <option value="electricidad">Electricidad</option>
+                            <option value="limpieza">Limpieza del hogar</option>
+                            <option value="reparaciones">Reparaciones y técnico</option>
+                            <option value="mudanza">Mudanzas y carga</option>
+                            <option value="pintura">Pintura</option>
+                            <option value="carpintería">Carpintería</option>
+                            <option value="jardinería">Jardinería</option>
+                        </select>
+                    </label>
+                    <div class="publicar-fila">
+                        <label>Distrito
+                            <input type="text" name="distrito" placeholder="Ej: Miraflores" required>
+                        </label>
+                        <label>Precio referencial
+                            <input type="text" name="precio" placeholder="Ej: S/ 80 o A convenir">
+                        </label>
+                    </div>
+                    <label>Descripción
+                        <textarea name="descripcion" rows="4" placeholder="Describe tu servicio, experiencia y qué incluye" required></textarea>
+                    </label>
+                    <button type="submit" class="btn-publicar">Publicar servicio</button>
+                </form>
+            </div>
+
+            <h3 class="mis-pubs-titulo">Mis publicaciones</h3>
+            <div id="mis-publicaciones" class="feed-pubs"></div>
+        </div>
+    </div>
+</div>
+
+<script src="assets/js/datos.js"></script>
+<script src="assets/js/app-interno.js"></script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat | ServiHogar</title>
+    <link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body>
+<div class="app-shell">
+
+    <aside class="sidebar">
+        <a href="app-inicio.html" class="sidebar-logo">
+            <img src="assets/images/logo.jpg" alt="ServiHogar">
+            <span>Servi<b>Hogar</b></span>
+        </a>
+        <nav class="sidebar-nav">
+            <a href="app-inicio.html" class="nav-item"><span>Inicio</span></a>
+            <a href="app-buscar.html" class="nav-item"><span>Buscar</span></a>
+            <a href="app-chat.html" class="nav-item active"><span>Chats</span></a>
+            <a href="app-historial.html" class="nav-item"><span>Historial</span></a>
+            <a href="app-perfil.html" class="nav-item"><span>Perfil</span></a>
+        </nav>
+        <div class="sidebar-user">
+            <div class="user-name" id="sidebar-name">Cargando...</div>
+            <div class="user-type" id="sidebar-type">Cliente</div>
+            <a href="#" class="btn-salir" id="btn-salir">← Cerrar sesión</a>
+        </div>
+    </aside>
+
+    <div class="main">
+        <div class="topbar">
+            <div class="topbar-title">Chats</div>
+        </div>
+
+        <div class="page chat-page">
+
+            <!-- Lista de chats -->
+            <div class="chat-sidebar">
+                <div class="chat-sidebar-title">Conversaciones</div>
+                <div id="chat-list"></div>
+            </div>
+
+            <!-- Ventana de chat -->
+            <div class="chat-window">
+                <div class="chat-window-header">
+                    <span id="chat-header">Selecciona una conversación</span>
+                    <div class="chat-header-actions" id="chat-header-actions" hidden>
+                        <button type="button" id="btn-vaciar-chat" class="chat-action-btn">Vaciar chat</button>
+                    </div>
+                </div>
+                <div id="chat-messages" class="chat-messages"></div>
+                <form id="chat-form" class="chat-form">
+                    <label class="chat-attach" title="Adjuntar imagen">
+                        <input id="chat-image" type="file" accept="image/*" hidden>
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
+                    </label>
+                    <input id="chat-input" type="text" placeholder="Escribe un mensaje..." autocomplete="off" class="chat-input">
+                    <button type="submit" class="chat-send-btn">Enviar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="assets/js/datos.js"></script>
+<script src="assets/js/app-interno.js"></script>
+</body>
+</html>
