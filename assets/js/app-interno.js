@@ -65,6 +65,42 @@ document.addEventListener("DOMContentLoaded", async function () {
     if (label) label.textContent = "Publicar";
   }
 
+  // ── Notificación de chats no leídos (número rojo junto a "Chats") ──
+  function getLeido() {
+    try { return JSON.parse(localStorage.getItem("servihogar_leido")) || {}; }
+    catch (e) { return {}; }
+  }
+  function setLeido(obj) { localStorage.setItem("servihogar_leido", JSON.stringify(obj)); }
+  function contarNoLeidos() {
+    const leido = getLeido();
+    const yo = sesion.correo.toLowerCase();
+    let n = 0;
+    DB.getConversacionesDe(sesion.correo).forEach((c) => {
+      if (c.ultimo && (c.ultimo.de || "").toLowerCase() !== yo && c.ultimo.ts > (leido[c.correo] || 0)) n++;
+    });
+    return n;
+  }
+  function marcarLeido(correo) {
+    const leido = getLeido();
+    const msgs = DB.getMensajes(sesion.correo, correo);
+    const conv = DB.getConversacionesDe(sesion.correo).find((c) => c.correo === correo);
+    leido[correo] = msgs.length ? msgs[msgs.length - 1].ts : (conv && conv.ultimo ? conv.ultimo.ts : Date.now());
+    setLeido(leido);
+  }
+  function actualizarBadgeChats() {
+    const link = document.querySelector('.sidebar-nav a[href="app-chat.html"]');
+    if (!link) return;
+    let badge = link.querySelector(".nav-badge");
+    const n = contarNoLeidos();
+    if (n > 0) {
+      if (!badge) { badge = document.createElement("span"); badge.className = "nav-badge"; link.appendChild(badge); }
+      badge.textContent = n > 99 ? "99+" : n;
+    } else if (badge) {
+      badge.remove();
+    }
+  }
+  actualizarBadgeChats();
+
   /* ========================================================
      INICIO — apartado distinto para cliente y trabajador
      ======================================================== */
@@ -283,7 +319,11 @@ document.addEventListener("DOMContentLoaded", async function () {
       { servicio: "Cambio de grifería", contraparte: "Jorge Ramos", fecha: "29 abr 2025", monto: "S/ 110", estado: "completado" },
       { servicio: "Instalación de termas", contraparte: "Lucía Paredes", fecha: "30 may 2025", monto: "S/ 160", estado: "pendiente" },
     ];
-    const historial = esTrabajador ? historialTrabajador : historialCliente;
+    // Los datos de ejemplo solo se muestran en las cuentas de demostración.
+    // Un usuario nuevo empieza con el historial vacío.
+    const correosDemo = ["cliente@servihogar.com", "trabajador@servihogar.com", "rosa@servihogar.com"];
+    const esDemo = correosDemo.indexOf(sesion.correo.toLowerCase()) !== -1;
+    const historial = !esDemo ? [] : (esTrabajador ? historialTrabajador : historialCliente);
     const etiqueta = esTrabajador ? "Cliente" : "Trabajador";
 
     function renderHistorial(lista) {
@@ -300,7 +340,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 <span style="font-weight:600;">${h.monto}</span>
                 <span class="badge-estado badge-${h.estado}">${DB.capitalizar(h.estado)}</span>
             </div>
-        </div>`).join("") : `<div class="empty-state"><h3>Sin servicios en esta categoría.</h3></div>`;
+        </div>`).join("") : `<div class="empty-state"><h3>Aún no tienes servicios en tu historial</h3><p>Cuando completes un servicio aparecerá aquí.</p></div>`;
     }
 
     window.mostrarTab = function (filtro, btn) {
@@ -466,6 +506,8 @@ document.addEventListener("DOMContentLoaded", async function () {
       try { await DB.cargarMensajes(sesion.correo, chatActual); } catch (e) {}
       pintarMensajes();
       reactivarSeleccion();
+      marcarLeido(chatActual);
+      actualizarBadgeChats();
     }
 
     function reactivarSeleccion() {
@@ -647,7 +689,9 @@ document.addEventListener("DOMContentLoaded", async function () {
           if (firmaDe(DB.getMensajes(sesion.correo, chatActual)) !== ultimaFirma) {
             pintarMensajes();
           }
+          marcarLeido(chatActual); // el chat abierto se considera leído
         }
+        actualizarBadgeChats();
       } catch (e) { /* servidor no disponible momentáneamente */ }
     }, 3000);
   }
