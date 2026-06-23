@@ -1068,9 +1068,11 @@ footer {
     .servicios-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
+/* Botón hamburguesa: oculto en escritorio */
+.nav-burger { display: none; }
+
 @media (max-width: 768px) {
     header { padding: 0 20px; height: 70px; }
-    nav a { font-size: 13px; padding: 6px 10px; }
     .logo h4 { font-size: 1.2rem; }
     .hero { padding: 110px 20px 70px; }
     .hero-texto h1 { font-size: 1.8rem; }
@@ -1078,6 +1080,38 @@ footer {
     .personas { grid-template-columns: 1fr; }
     .hero-botones { justify-content: center; }
     .servicios-grid { grid-template-columns: 1fr; }
+
+    /* Menú hamburguesa */
+    .nav-burger {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        cursor: pointer;
+        padding: 6px;
+    }
+    .nav-burger span {
+        width: 26px; height: 3px;
+        background: var(--color-blanco);
+        border-radius: 2px;
+        transition: var(--transicion);
+    }
+    nav {
+        display: none;
+        position: absolute;
+        top: 70px; left: 0;
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 4px;
+        background: rgba(17, 24, 39, 0.98);
+        padding: 12px 20px 18px;
+        border-bottom: 1px solid rgba(251, 191, 38, 0.25);
+        box-shadow: var(--sombra-lg);
+    }
+    .nav-toggle:checked ~ nav { display: flex; }
+    nav a { font-size: 15px; padding: 12px 10px; width: 100%; }
+    nav a.boton-principal, .boton-principal { text-align: center; margin-top: 6px; }
 }
 
 /* ============================================================

@@ -1421,3 +1421,101 @@ body { font-family: 'Poppins', sans-serif; background: var(--gris-fondo); color:
 @media (max-width: 600px) {
     .publicar-fila { flex-direction: column; gap: 0; }
 }
+
+/* ============================================================
+   MÓVIL — el menú lateral se vuelve barra inferior
+   ============================================================ */
+.chat-back { display: none; }
+
+@media (max-width: 640px) {
+    /* Menú lateral -> barra inferior fija */
+    .sidebar {
+        width: 100%;
+        height: 60px;
+        flex-direction: row;
+        top: auto;
+        bottom: 0;
+        left: 0;
+        padding: 0;
+        border-right: none;
+        border-top: 1px solid rgba(251,191,38,0.2);
+        z-index: 200;
+    }
+    .sidebar-logo, .sidebar-user { display: none; }
+    .sidebar-nav {
+        flex: 1;
+        flex-direction: row;
+        width: 100%;
+        padding: 0;
+        gap: 0;
+        align-items: stretch;
+        justify-content: space-around;
+    }
+    .nav-item {
+        flex: 1;
+        flex-direction: column;
+        justify-content: center;
+        gap: 0;
+        font-size: 11px;
+        padding: 6px 2px;
+        border-radius: 0;
+        text-align: center;
+        position: relative;
+    }
+    .nav-badge {
+        position: absolute;
+        top: 4px;
+        left: 50%;
+        margin-left: 4px;
+        min-width: 15px;
+        height: 15px;
+        font-size: 9px;
+        padding: 0 4px;
+    }
+
+    /* Contenido a pantalla completa, con espacio para la barra inferior */
+    .main { margin-left: 0; padding-bottom: 64px; }
+    .topbar { padding: 14px 16px; }
+    .topbar-title { font-size: 16px; }
+    .page { padding: 16px; }
+
+    /* Feed / inicio */
+    .stats-row { grid-template-columns: 1fr; gap: 12px; }
+    .feed-topbar { flex-wrap: wrap; gap: 10px; }
+    .feed-topbar .tabs { order: 1; }
+    .btn-solicitar { order: 2; width: 100%; }
+    .welcome h2 { font-size: 1.25rem; }
+
+    /* Buscar */
+    .workers-grid { grid-template-columns: 1fr; }
+    .pills-row { overflow-x: auto; flex-wrap: nowrap; -webkit-overflow-scrolling: touch; }
+    .pills-row .pill { flex: 0 0 auto; }
+
+    /* Perfil */
+    .perfil-box { padding: 20px; }
+
+    /* CHAT — una sola columna con cambio entre lista y conversación */
+    .chat-page {
+        flex-direction: column;
+        gap: 0;
+        height: calc(100vh - 60px - 56px); /* barra inferior + topbar aprox */
+    }
+    .chat-sidebar { width: 100%; flex: 1; }
+    .chat-window { display: none; }
+    .chat-page.chat-abierto .chat-sidebar { display: none; }
+    .chat-page.chat-abierto .chat-window { display: flex; flex: 1; }
+    .chat-back {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: none;
+        border: none;
+        color: var(--oscuro);
+        font-size: 22px;
+        line-height: 1;
+        cursor: pointer;
+        padding: 0 6px 0 0;
+        flex-shrink: 0;
+    }
+    .msg { max-width: 88%; }
+}

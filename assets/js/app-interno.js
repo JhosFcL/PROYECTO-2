@@ -448,6 +448,13 @@ document.addEventListener("DOMContentLoaded", async function () {
     const chatImage = document.getElementById("chat-image");
     const chatHeaderActions = document.getElementById("chat-header-actions");
     const btnVaciarChat = document.getElementById("btn-vaciar-chat");
+    const chatPage = document.querySelector(".chat-page");
+    const chatBack = document.getElementById("chat-back");
+    if (chatBack) {
+      chatBack.addEventListener("click", function () {
+        if (chatPage) chatPage.classList.remove("chat-abierto");
+      });
+    }
     let chatActual = null; // correo de la otra persona
     let ultimaFirma = "";  // para detectar mensajes nuevos en el sondeo
 
@@ -503,6 +510,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       const rol = otro ? (otro.tipo === "trabajador" ? "Trabajador" : "Cliente") : "";
       chatHeader.textContent = nombre + (rol ? " · " + rol : "");
       if (chatHeaderActions) chatHeaderActions.hidden = false;
+      if (chatPage) chatPage.classList.add("chat-abierto"); // en móvil muestra la conversación
       try { await DB.cargarMensajes(sesion.correo, chatActual); } catch (e) {}
       pintarMensajes();
       reactivarSeleccion();
@@ -672,9 +680,10 @@ document.addEventListener("DOMContentLoaded", async function () {
         abrirChat(t);
       }
     } else {
-      // abrir la primera conversación por defecto
+      // abrir la primera conversación por defecto (en móvil se ve primero la lista)
+      const esMovil = window.matchMedia("(max-width: 640px)").matches;
       const convs = DB.getConversacionesDe(sesion.correo);
-      if (convs.length) abrirChat(convs[0].correo);
+      if (convs.length && !esMovil) abrirChat(convs[0].correo);
     }
 
     // Sondeo: refresca la lista y el chat abierto para ver mensajes nuevos en vivo
