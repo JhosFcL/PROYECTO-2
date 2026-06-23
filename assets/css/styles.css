@@ -1019,9 +1019,26 @@ footer {
     justify-content: space-between;
     max-width: 1200px;
     margin: 0 auto 40px;
-    gap: 50px;
+    gap: 40px;
     flex-wrap: wrap;
 }
+
+.footer-col {
+    flex: 1 1 160px;
+    min-width: 150px;
+}
+
+.footer-contacto {
+    margin-top: 16px;
+    color: var(--color-texto-claro);
+    font-size: 14px;
+}
+.footer-contacto a {
+    color: var(--color-primario);
+    text-decoration: none;
+    word-break: break-all;
+}
+.footer-contacto a:hover { text-decoration: underline; }
 
 .footer-col h3 {
     color: var(--color-primario);
